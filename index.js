@@ -1,4 +1,6 @@
 const searchPhone = () => {
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.innerHTML='';
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
@@ -14,10 +16,10 @@ const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     const noResult = document.getElementById('no-result');
-    noResult.innerHTML='';
+    noResult.innerHTML = '';
     if (data.length == 0) {
         // show no result found;
-        
+
         const div = document.createElement('div')
         div.innerHTML = `<p class="card-text ">No Result Found !!!</p>`;
         noResult.appendChild(div);
@@ -41,7 +43,7 @@ const displaySearchResult = data => {
         </div>
         `;
         searchResult.appendChild(div);
-        noResult.innerHTML='';
+        noResult.innerHTML = '';
     })
 }
 
@@ -52,18 +54,26 @@ const loadPhoneDetail = id => {
         .then(data => displayPhoneDetail(data.data));
 }
 
-const displayPhoneDetail = meal => {
-    console.log(meal);
-    const mealDetails = document.getElementById('meal-details');
+const displayPhoneDetail = detail => {
+    // console.log(detail);
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.innerHTML='';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
-    <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+    <div class='mx-auto'>
+             <img class='img-fluid py-3' src="${detail.image}" class="card-img-top" alt="...">
+        </div>
     <div class="card-body">
-        <h5 class="card-title">${meal.strMeal}</h5>
-        <p class="card-text">${meal.strInstructions.slice(0, 150)}</p>
-        <a href="${meal.strYoutube}" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Release-Date : ${detail.releaseDate ?detail.releaseDate:'Not Found'}</h5>
+        <p class="card-text">Name : ${detail.name}</p>
+        <p class="card-text">Brand : ${detail.brand}</p>
+        <p class="card-text">Storage : ${detail.mainFeatures.storage}</p>
+        <p class="card-text">Display : ${detail.mainFeatures.displaySize}</p>      
+        <p class="card-text">Sensors : ${detail.mainFeatures.sensors} </p>
+        <p class="card-text">Others :  </p>
+        <p class="card-text">Bluetooth : ${detail.others.Bluetooth}</p>
     </div>
     `;
-    mealDetails.appendChild(div);
+    phoneDetails.appendChild(div);
 }
