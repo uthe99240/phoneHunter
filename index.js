@@ -65,14 +65,19 @@ const displayPhoneDetail = detail => {
              <img class='img-fluid py-3' src="${detail.image}" class="card-img-top" alt="...">
         </div>
     <div class="card-body">
-        <h5 class="card-title">Release-Date : ${detail.releaseDate ?detail.releaseDate:'Not Found'}</h5>
+        <h5 class="card-title">Release-Date : ${detail.releaseDate ?detail.releaseDate:'NO Release Date'}</h5>
         <p class="card-text">Name : ${detail.name}</p>
         <p class="card-text">Brand : ${detail.brand}</p>
         <p class="card-text">Storage : ${detail.mainFeatures.storage}</p>
         <p class="card-text">Display : ${detail.mainFeatures.displaySize}</p>      
         <p class="card-text">Sensors : ${detail.mainFeatures.sensors} </p>
         <p class="card-text">Others :  </p>
+        <p class="card-text">Wlan : ${detail.others.WLAN}</p>
         <p class="card-text">Bluetooth : ${detail.others.Bluetooth}</p>
+        <p class="card-text">GPS : ${detail.others.GPS}</p>
+        <p class="card-text">NFC : ${detail.others.NFC}</p>
+        <p class="card-text">Radio : ${detail.others.Radio}</p>
+        <p class="card-text">USB : ${detail.others.USB}</p>
     </div>
     `;
     phoneDetails.appendChild(div);
